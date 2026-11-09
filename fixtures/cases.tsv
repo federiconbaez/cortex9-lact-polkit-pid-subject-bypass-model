@@ -1,0 +1,24 @@
+# id	kind	client_uid	reuser_uid	event	peercred	pidfd_kernel	st_check	hand_pre	hand_d0478fe	hand_i32	hand_v0101
+# hand_*: polkit decision derived by hand from handler.rs, zbus_polkit policykit1.rs and the PR 101 text
+p01_swap_root_before_check	pos	1000	0	reuse_before_check	1	1	0	AUTHORIZED	AUTHORIZED	CHALLENGE	ERROR
+p02_swap_root_before_check_no_pidfd	pos	1000	0	reuse_before_check	1	0	0	AUTHORIZED	AUTHORIZED	CHALLENGE	CHALLENGE
+p03_swap_root_before_build	pos	1000	0	reuse_before_build	1	1	0	AUTHORIZED	AUTHORIZED	CHALLENGE	ERROR
+p04_swap_before_build_starttime	pos	1000	0	reuse_before_build	1	0	1	AUTHORIZED	AUTHORIZED	CHALLENGE	CHALLENGE
+p05_swap_before_build_both	pos	1000	0	reuse_before_build	1	1	1	AUTHORIZED	AUTHORIZED	CHALLENGE	ERROR
+p06_group_user_swap	pos	1001	0	reuse_before_check	1	0	0	AUTHORIZED	AUTHORIZED	CHALLENGE	CHALLENGE
+n01_no_race_user	neg	1000	0	none	1	1	0	CHALLENGE	CHALLENGE	CHALLENGE	CHALLENGE
+n02_no_race_root	neg	0	0	none	1	1	0	AUTHORIZED	AUTHORIZED	AUTHORIZED	AUTHORIZED
+n03_swap_to_user_no_pidfd	neg	1000	1001	reuse_before_check	1	0	0	CHALLENGE	CHALLENGE	CHALLENGE	CHALLENGE
+n04_exit_before_build	neg	1000	0	exit_before_build	1	1	0	ERROR	ERROR	ERROR	ERROR
+n05_no_peercred	neg	1000	0	reuse_before_check	0	1	0	ERROR	ERROR	ERROR	ERROR
+n06_no_race_all_checks	neg	1000	0	none	1	1	1	CHALLENGE	CHALLENGE	CHALLENGE	CHALLENGE
+n07_no_race_root_no_pidfd	neg	0	1000	none	1	0	1	AUTHORIZED	AUTHORIZED	AUTHORIZED	AUTHORIZED
+e01_exit_before_check	edge	1000	0	exit_before_check	1	0	0	ERROR	ERROR	CHALLENGE	CHALLENGE
+e02_swap_to_user_pidfd	edge	1000	1001	reuse_before_check	1	1	0	CHALLENGE	CHALLENGE	CHALLENGE	ERROR
+e03_swap_late_starttime	edge	1000	0	reuse_before_check	1	0	1	ERROR	ERROR	ERROR	ERROR
+e04_root_client_swapped_out	edge	0	1000	reuse_before_check	1	0	0	CHALLENGE	CHALLENGE	AUTHORIZED	AUTHORIZED
+e05_exit_before_check_pidfd	edge	1000	0	exit_before_check	1	1	0	ERROR	ERROR	CHALLENGE	ERROR
+b01_unknown_event	bad	1000	0	later	1	1	0	BAD_INPUT	BAD_INPUT	BAD_INPUT	BAD_INPUT
+b02_negative_uid	bad	-1	0	none	1	1	0	BAD_INPUT	BAD_INPUT	BAD_INPUT	BAD_INPUT
+b03_flag_not_bool	bad	1000	0	none	2	1	0	BAD_INPUT	BAD_INPUT	BAD_INPUT	BAD_INPUT
+b04_uid_too_big	bad	4294967295	0	none	1	1	0	BAD_INPUT	BAD_INPUT	BAD_INPUT	BAD_INPUT

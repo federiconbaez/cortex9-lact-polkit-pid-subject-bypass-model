@@ -1,0 +1,89 @@
+id,kind,version,decision,bypass,uid_type,uid_value,pidfd_sent,reason
+p01_swap_root_before_check,pos,pre,AUTHORIZED,1,u32,1000,0,uid from /proc at check
+p01_swap_root_before_check,pos,d0478fe,AUTHORIZED,1,u32,1000,0,uid from /proc at check
+p01_swap_root_before_check,pos,i32,CHALLENGE,0,i32,1000,0,uid from subject
+p01_swap_root_before_check,pos,v0101,ERROR,0,i32,1000,1,pidfd: client process gone (assumption)
+p02_swap_root_before_check_no_pidfd,pos,pre,AUTHORIZED,1,u32,1000,0,uid from /proc at check
+p02_swap_root_before_check_no_pidfd,pos,d0478fe,AUTHORIZED,1,u32,1000,0,uid from /proc at check
+p02_swap_root_before_check_no_pidfd,pos,i32,CHALLENGE,0,i32,1000,0,uid from subject
+p02_swap_root_before_check_no_pidfd,pos,v0101,CHALLENGE,0,i32,1000,0,uid from subject
+p03_swap_root_before_build,pos,pre,AUTHORIZED,1,u32,0,0,uid from /proc at check
+p03_swap_root_before_build,pos,d0478fe,AUTHORIZED,1,u32,1000,0,uid from /proc at check
+p03_swap_root_before_build,pos,i32,CHALLENGE,0,i32,1000,0,uid from subject
+p03_swap_root_before_build,pos,v0101,ERROR,0,i32,1000,1,pidfd: client process gone (assumption)
+p04_swap_before_build_starttime,pos,pre,AUTHORIZED,1,u32,0,0,uid from /proc at check
+p04_swap_before_build_starttime,pos,d0478fe,AUTHORIZED,1,u32,1000,0,uid from /proc at check
+p04_swap_before_build_starttime,pos,i32,CHALLENGE,0,i32,1000,0,uid from subject
+p04_swap_before_build_starttime,pos,v0101,CHALLENGE,0,i32,1000,0,uid from subject
+p05_swap_before_build_both,pos,pre,AUTHORIZED,1,u32,0,0,uid from /proc at check
+p05_swap_before_build_both,pos,d0478fe,AUTHORIZED,1,u32,1000,0,uid from /proc at check
+p05_swap_before_build_both,pos,i32,CHALLENGE,0,i32,1000,0,uid from subject
+p05_swap_before_build_both,pos,v0101,ERROR,0,i32,1000,1,pidfd: client process gone (assumption)
+p06_group_user_swap,pos,pre,AUTHORIZED,1,u32,1001,0,uid from /proc at check
+p06_group_user_swap,pos,d0478fe,AUTHORIZED,1,u32,1001,0,uid from /proc at check
+p06_group_user_swap,pos,i32,CHALLENGE,0,i32,1001,0,uid from subject
+p06_group_user_swap,pos,v0101,CHALLENGE,0,i32,1001,0,uid from subject
+n01_no_race_user,neg,pre,CHALLENGE,0,u32,1000,0,uid from /proc at check
+n01_no_race_user,neg,d0478fe,CHALLENGE,0,u32,1000,0,uid from /proc at check
+n01_no_race_user,neg,i32,CHALLENGE,0,i32,1000,0,uid from subject
+n01_no_race_user,neg,v0101,CHALLENGE,0,i32,1000,1,uid from subject
+n02_no_race_root,neg,pre,AUTHORIZED,0,u32,0,0,uid from /proc at check
+n02_no_race_root,neg,d0478fe,AUTHORIZED,0,u32,0,0,uid from /proc at check
+n02_no_race_root,neg,i32,AUTHORIZED,0,i32,0,0,uid from subject
+n02_no_race_root,neg,v0101,AUTHORIZED,0,i32,0,1,uid from subject
+n03_swap_to_user_no_pidfd,neg,pre,CHALLENGE,0,u32,1000,0,uid from /proc at check
+n03_swap_to_user_no_pidfd,neg,d0478fe,CHALLENGE,0,u32,1000,0,uid from /proc at check
+n03_swap_to_user_no_pidfd,neg,i32,CHALLENGE,0,i32,1000,0,uid from subject
+n03_swap_to_user_no_pidfd,neg,v0101,CHALLENGE,0,i32,1000,0,uid from subject
+n04_exit_before_build,neg,pre,ERROR,0,,,,pid_start_time: no such process
+n04_exit_before_build,neg,d0478fe,ERROR,0,,,,pid_start_time: no such process
+n04_exit_before_build,neg,i32,ERROR,0,,,,pid_start_time: no such process
+n04_exit_before_build,neg,v0101,ERROR,0,,,,pid_start_time: no such process
+n05_no_peercred,neg,pre,ERROR,0,,,,no client PID
+n05_no_peercred,neg,d0478fe,ERROR,0,,,,no client UID
+n05_no_peercred,neg,i32,ERROR,0,,,,no client UID
+n05_no_peercred,neg,v0101,ERROR,0,,,,no client UID
+n06_no_race_all_checks,neg,pre,CHALLENGE,0,u32,1000,0,uid from /proc at check
+n06_no_race_all_checks,neg,d0478fe,CHALLENGE,0,u32,1000,0,uid from /proc at check
+n06_no_race_all_checks,neg,i32,CHALLENGE,0,i32,1000,0,uid from subject
+n06_no_race_all_checks,neg,v0101,CHALLENGE,0,i32,1000,1,uid from subject
+n07_no_race_root_no_pidfd,neg,pre,AUTHORIZED,0,u32,0,0,uid from /proc at check
+n07_no_race_root_no_pidfd,neg,d0478fe,AUTHORIZED,0,u32,0,0,uid from /proc at check
+n07_no_race_root_no_pidfd,neg,i32,AUTHORIZED,0,i32,0,0,uid from subject
+n07_no_race_root_no_pidfd,neg,v0101,AUTHORIZED,0,i32,0,0,uid from subject
+e01_exit_before_check,edge,pre,ERROR,0,u32,1000,0,polkitd /proc lookup: no such process
+e01_exit_before_check,edge,d0478fe,ERROR,0,u32,1000,0,polkitd /proc lookup: no such process
+e01_exit_before_check,edge,i32,CHALLENGE,0,i32,1000,0,uid from subject
+e01_exit_before_check,edge,v0101,CHALLENGE,0,i32,1000,0,uid from subject
+e02_swap_to_user_pidfd,edge,pre,CHALLENGE,0,u32,1000,0,uid from /proc at check
+e02_swap_to_user_pidfd,edge,d0478fe,CHALLENGE,0,u32,1000,0,uid from /proc at check
+e02_swap_to_user_pidfd,edge,i32,CHALLENGE,0,i32,1000,0,uid from subject
+e02_swap_to_user_pidfd,edge,v0101,ERROR,0,i32,1000,1,pidfd: client process gone (assumption)
+e03_swap_late_starttime,edge,pre,ERROR,0,u32,1000,0,start-time mismatch (assumption)
+e03_swap_late_starttime,edge,d0478fe,ERROR,0,u32,1000,0,start-time mismatch (assumption)
+e03_swap_late_starttime,edge,i32,ERROR,0,i32,1000,0,start-time mismatch (assumption)
+e03_swap_late_starttime,edge,v0101,ERROR,0,i32,1000,0,start-time mismatch (assumption)
+e04_root_client_swapped_out,edge,pre,CHALLENGE,0,u32,0,0,uid from /proc at check
+e04_root_client_swapped_out,edge,d0478fe,CHALLENGE,0,u32,0,0,uid from /proc at check
+e04_root_client_swapped_out,edge,i32,AUTHORIZED,0,i32,0,0,uid from subject
+e04_root_client_swapped_out,edge,v0101,AUTHORIZED,0,i32,0,0,uid from subject
+e05_exit_before_check_pidfd,edge,pre,ERROR,0,u32,1000,0,polkitd /proc lookup: no such process
+e05_exit_before_check_pidfd,edge,d0478fe,ERROR,0,u32,1000,0,polkitd /proc lookup: no such process
+e05_exit_before_check_pidfd,edge,i32,CHALLENGE,0,i32,1000,0,uid from subject
+e05_exit_before_check_pidfd,edge,v0101,ERROR,0,i32,1000,1,pidfd: client process gone (assumption)
+b01_unknown_event,bad,pre,BAD_INPUT,,,,,
+b01_unknown_event,bad,d0478fe,BAD_INPUT,,,,,
+b01_unknown_event,bad,i32,BAD_INPUT,,,,,
+b01_unknown_event,bad,v0101,BAD_INPUT,,,,,
+b02_negative_uid,bad,pre,BAD_INPUT,,,,,
+b02_negative_uid,bad,d0478fe,BAD_INPUT,,,,,
+b02_negative_uid,bad,i32,BAD_INPUT,,,,,
+b02_negative_uid,bad,v0101,BAD_INPUT,,,,,
+b03_flag_not_bool,bad,pre,BAD_INPUT,,,,,
+b03_flag_not_bool,bad,d0478fe,BAD_INPUT,,,,,
+b03_flag_not_bool,bad,i32,BAD_INPUT,,,,,
+b03_flag_not_bool,bad,v0101,BAD_INPUT,,,,,
+b04_uid_too_big,bad,pre,BAD_INPUT,,,,,
+b04_uid_too_big,bad,d0478fe,BAD_INPUT,,,,,
+b04_uid_too_big,bad,i32,BAD_INPUT,,,,,
+b04_uid_too_big,bad,v0101,BAD_INPUT,,,,,
